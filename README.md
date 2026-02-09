@@ -112,7 +112,7 @@ You may adapt or extend penalty functions used in the notebook (e.g., logarithmi
 Gradients may be computed:
 
 - Analytically, or
-- Numerically (e.g., finite differences)
+- Numerically (e.g., finite differences) or using library functions. 
 
 Closed-form gradients are **not required**.
 
@@ -168,6 +168,12 @@ Answer the following questions:
 1. How does wall thickness or influence radius affect the resulting path?
 2. What happens near corners or narrow corridors?
 3. Does the method ever get stuck? Why or why not?
+4. 4. How did different penalty functions change:
+   - path smoothness,
+   - clearance from walls,
+   - convergence speed,
+   - and susceptibility to local minima?
+
 
 ------
 
@@ -181,8 +187,11 @@ The repository should contain at minimum:
   - Wall penalty functions
   - Gradient descent implementation
   - Visualizations and animations
-  - A comparison of the different wall penalty formulations
-    
+  - A comparison of at least three different wall penalty formulations,
+  using the same floor plan and start/goal configuration. The comparison should include
+both visual results (trajectories, cost fields)
+and a qualitative discussion of behavior.
+      
 - Generated figures:
   - Cost contours
   - Gradient vector field
