@@ -1,0 +1,47 @@
+# LaTeX auxiliary files
+*.aux
+*.log
+*.fls
+*.toc
+*.lof
+*.lot
+*.out
+*.fmt
+*.fot
+*.cb
+*.cb2
+.*.lb
+*.dvi
+*.xdv
+*.blg
+*.bbl
+*.brf
+*.idx
+*.ind
+*.ilg
+*.glo
+*.gls
+*.ist
+*.glg
+*.synctex.gz
+*_minted*.pyg
+*_minted*.aux
+# End of LaTeX auxiliary files
+
+# Intermediate documents
+*.dvi
+*.xdv
+*.ps
+*.pdf # Uncomment this line if you do not want to track the generated PDF
+# End of intermediate documents
+
+# Editor/OS specific files (optional, can be in a global gitignore)
+.DS_Store
+# add more editor-specific files here if needed
+# End of editor/OS specific files
+
+# Folders created by some packages
+svg-inkscape/
+
+
+

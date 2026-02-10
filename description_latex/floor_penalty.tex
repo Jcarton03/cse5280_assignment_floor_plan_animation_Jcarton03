@@ -1,0 +1,1024 @@
+%===================================================================================
+% Load the preamble with LaTeX commands/classes
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+% =========================================================
+% Document class: KOMA-Script book
+% =========================================================
+\documentclass[
+  12pt,
+  oneside,            % safer for electronic submission
+  paper=letter,
+  DIV=15,
+  BCOR=0mm,
+  headings=small,
+  listof=totoc,       % list of figures/tables in TOC
+  abstract=true
+]{scrbook}
+
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% =========================================================
+% Fonts
+% =========================================================
+\usepackage{lmodern}
+% \usepackage{libertinus}
+% \usepackage{libertinust1math}
+
+% =========================================================
+% Header / footer
+% =========================================================
+\usepackage[headsepline, footsepline]{scrlayer-scrpage}
+
+\clearpairofpagestyles
+\ohead{\headmark}
+\ofoot{\pagemark}
+
+% =========================================================
+% Math, symbols, units
+% =========================================================
+\usepackage{amsmath}
+\usepackage{amsxtra}
+\usepackage{eurosym}
+\usepackage{siunitx}
+\sisetup{locale=DE}
+\usepackage[version=4]{mhchem}
+
+% =========================================================
+% Typography
+% =========================================================
+\usepackage[auto]{microtype}
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% =========================================================
+% Figures, tables, code
+% =========================================================
+\usepackage{graphicx}
+\usepackage{multirow, multicol, booktabs}
+\usepackage{threeparttable}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage{ltablex}
+\usepackage{subfig}
+\captionsetup[subtable]{position=top}
+\usepackage{pdfpages}
+\usepackage{listings}
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+
+% =========================================================
+% URLs
+% =========================================================
+\usepackage{url}
+\urlstyle{same}
+
+% =========================================================
+% Footnotes
+% =========================================================
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+
+\deffootnote{1.5em}{1em}{%
+  \makebox[1.5em][l]{\thefootnotemark}%
+}
+\interfootnotelinepenalty=10000
+
+% =========================================================
+% Review helpers
+% =========================================================
+\usepackage{todonotes}
+\usepackage{blindtext}
+
+% =========================================================
+% Bibliography
+% =========================================================
+\usepackage[
+  backend=biber,
+  style=iso-numeric
+]{biblatex}
+
+\renewcommand*{\labelnamepunct}{\addcolon\addspace}
+\bibliography{literatur/literaturdatenbank}
+
+% =========================================================
+% Caption styling
+% =========================================================
+\addtokomafont{caption}{\small}
+\setkomafont{captionlabel}{\sffamily\bfseries}
+\setkomafont{subject}{\Large\bfseries}
+\setkomafont{author}{\normalfont}
+\setkomafont{date}{\normalfont}
+\setkomafont{publishers}{\normalfont}
+
+%\renewcaptionname{english}{\figurename}{Abb.}
+%\renewcaptionname{english}{\tablename}{Tab.}
+
+% =========================================================
+% TOC spacing (chapter-aware)
+% =========================================================
+\makeatletter
+\renewcommand{\l@chapter}{\@dottedtocline{0}{0em}{1.8em}}
+\renewcommand{\l@section}{\@dottedtocline{1}{1.8em}{2.7em}}
+\renewcommand{\l@subsection}{\@dottedtocline{2}{4.5em}{3.6em}}
+\makeatother
+
+% =========================================================
+% Table font helpers
+% =========================================================
+\newenvironment{tabular10}{%
+  \fontsize{10}{12}\selectfont\tabular
+}{\endtabular}
+
+\newenvironment{tabular7}{%
+  \fontsize{7}{12}\selectfont\tabular
+}{\endtabular}
+
+% =========================================================
+% Hyperref + Cleveref
+% =========================================================
+\usepackage[
+  pdftitle={Abschlussbericht},
+  pdfauthor={},
+  hidelinks
+]{hyperref}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\include{bericht.preambel}
+\usepackage{amsmath, amssymb, tabularx}
+\usepackage{float}
+\usepackage{mdframed}
+\usepackage{listing}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdfpagemode=FullScreen,
+    }
+
+%===================================================================================
+% Formatting settings
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\usepackage[
+  letterpaper,
+  left=1.2in,
+  right=1.2in,
+  top=1in,
+  bottom=1in
+]{geometry}
+
+\setcapindent{0pt}
+
+% global settings for source code display with listings
+\lstset{basicstyle=\scriptsize\ttfamily,language={[LaTeX]TeX}}
+
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\fontsize{11pt}{13pt}\selectfont,
+  keywordstyle=\color{blue},
+  stringstyle=\color{red!70!black},
+  commentstyle=\color{green!50!black},
+  showstringspaces=false,
+  breaklines=true,
+  tabsize=2,
+  backgroundcolor=\color{gray!10}
+}
+
+
+\addbibresource{references.bib}
+
+
+
+\usepackage{setspace}
+\setstretch{1.15}
+
+%===================================================================================
+% Definitions & Macros
+%-------------------------------------------------------------------------------------------------------------------------------------------------
+
+\DeclareMathOperator{\Exp}{Exp}
+\DeclareMathOperator{\Log}{Log}
+
+
+% UPDATE THE DATA!
+% Place of the excursion
+\def\VARort{}
+% Date of the excursion
+\def\VARdatum{}
+% Author: First and last name 
+\def\VARname{Eraldo Ribeiro}
+% Author: Degree program
+\def\VARstudiengang{Department of Electrical Engineering and Computer Science\\
+Florida Institute of Technology\\
+Melbourne, FL, U.S.A.}
+% Author: Student ID number
+\def\VARmatrikelnr{}
+
+
+% page numbering: Arabic numerals
+\pagenumbering{arabic}
+
+
+
+\usepackage[headsepline]{scrlayer-scrpage}
+
+\clearpairofpagestyles
+\ohead{\headmark}
+\ofoot{\pagemark}
+
+
+
+\begin{document}
+
+% ---------------------------------------------------------
+% Front matter (Roman numerals)
+% ---------------------------------------------------------
+\frontmatter
+
+\title{CSE5280 Assignment:\\ 
+Penalty Functions for Floor Plan Navigation}
+\author{Eraldo Ribeiro}
+\date{\today}
+\publishers{Department of Electrical Engineering and Computer Science\\
+Florida Institute of Technology\\
+Melbourne, FL, U.S.A.}
+
+\maketitle
+
+% \chapter*{Abstract}
+% \addcontentsline{toc}{chapter}{Abstract}
+% \blindtext[2]
+
+% \chapter*{Acknowledgments}
+% \addcontentsline{toc}{chapter}{Acknowledgments}
+% \blindtext
+
+\tableofcontents
+%\listoffigures
+% \listoftables
+
+% ---------------------------------------------------------
+% Main matter (Arabic numerals)
+% ---------------------------------------------------------
+\mainmatter
+
+\chapter{Overview}
+
+In this assignment, you will extend the cost-function minimization framework described in the
+\emph{Animation by Cost-Function Minimization} notebook to a two-dimensional floor plan
+consisting of walls rather than point obstacles.
+
+\begin{itemize}
+  \item \textbf{Notebook Animation by Cost-Function Minimization}: 
+\url{https://github.com/eraldoribeiro/cse5280_animation_by_cost_function_minimization}
+\end{itemize}
+
+
+Your goal is to model walls as continuous penalty fields, combine them with a goal-attraction
+term, and use gradient descent to generate collision-free motion through the environment. In this assignment, walls are not geometric constraints---they are features of the cost
+landscape. Your animation succeeds or fails based entirely on how well you design that
+landscape.
+
+This assignment emphasizes \emph{problem formulation}: the animation should emerge entirely 
+from how you define and combine cost functions. 
+
+
+
+\section{Scope Clarification}
+
+This assignment is \textbf{not}:
+\begin{itemize}
+  \item A shortest-path planning problem
+  \item A graph-search problem
+  \item A discrete collision-detection task
+\end{itemize}
+
+You are \textbf{not expected} to compute globally optimal paths or completeness guarantees.
+
+Instead, the focus is on:
+\begin{itemize}
+  \item Continuous cost-field design
+  \item Local, gradient-based motion
+  \item Understanding how motion emerges from cost functions
+\end{itemize}
+
+
+\section{Learning Objectives}
+
+By completing this assignment, you will be able to:
+
+\begin{itemize}
+  \item Represent walls as continuous penalty functions
+  \item Convert geometric constraints into scalar cost fields
+  \item Compute and visualize gradients of spatial cost functions
+  \item Generate motion using gradient descent in complex environments
+  \item Analyze the strengths and limitations of potential-field methods
+\end{itemize}
+
+% --- ADD (optional): helps accreditation / outcomes alignment
+% \noindent\textbf{Conceptual focus:} modeling, optimization, and qualitative analysis.
+
+\section{Problem Description}
+
+You are given a simple two-dimensional floor plan composed of:
+\begin{itemize}
+  \item Axis-aligned walls (line segments)
+  \item A start position
+  \item A goal position
+\end{itemize}
+
+Your task is to design penalty functions that:
+\begin{itemize}
+  \item Penalize proximity to walls
+  \item Prevent the animated point from crossing through walls
+  \item Remain differentiable so gradient-based optimization can be applied
+\end{itemize}
+
+The final motion should reach the goal while remaining collision-free.
+
+% --- ADD: define what "success" looks like
+\subsection*{Expected Behavior}
+A successful implementation should demonstrate:
+\begin{itemize}
+  \item No visible wall crossings.
+  \item Convergence toward the goal for reasonable parameter choices.
+  \item Qualitatively different paths when wall parameters are changed.
+\end{itemize}
+
+\section{Deliverables}
+
+You must submit a link to a \textbf{GitHub repository} containing your work.
+
+The repository should contain at minimum:
+
+\begin{itemize}
+  \item \texttt{notebook.ipynb}, which includes:
+  \begin{itemize}
+    \item Wall penalty function implementations
+    \item Gradient descent implementation
+    \item Visualizations and animations
+    \item A comparison of \textbf{at least three} different wall penalty formulations,
+          using the same floor plan and start/goal configuration. The comparison should
+          include both visual results (e.g., trajectories, cost fields) and a qualitative
+          discussion of behavior.
+  \end{itemize}
+
+  \item Generated figures, including:
+  \begin{itemize}
+    \item Cost contours
+    \item Gradient vector field
+    \item Trajectory overlaid on the floor plan
+  \end{itemize}
+\end{itemize}
+
+Your notebook should include sufficient \textbf{Markdown explanations} to clearly describe
+your approach, design choices, and analysis.
+
+
+
+\section{Constraints and Guidelines}
+
+\begin{itemize}
+  \item Do not use discrete collision detection or path planning algorithms (e.g., A*, RRT).
+  \item Motion must be produced \emph{only} by cost-function minimization.
+  \item You may not hardcode collision checks (e.g., ``if collision then stop'').
+  \item All avoidance behavior must emerge from your penalty functions.
+\end{itemize}
+
+\section{Evaluation Criteria}
+
+\begin{center}
+\begin{tabular}{l c}
+\textbf{Criterion} & \textbf{Weight} \\
+\hline
+Correct modeling of walls as penalty fields & 30\% \\
+Quality of cost-field visualizations        & 20\% \\
+Correct use of gradients        & 20\% \\
+Analysis and explanation                   & 20\% \\
+Code clarity and organization              & 10\%\\
+\hline
+\end{tabular}
+\end{center}
+
+
+\chapter{Task Breakdown}
+
+\section{Floor Plan Representation}
+
+\begin{itemize}
+  \item Represent each wall as a line segment defined by two endpoints.
+  \item Store the full floor plan as a collection of wall segments.
+\end{itemize}
+
+You may assume:
+\begin{itemize}
+  \item Walls do not move.
+  \item Walls have a finite thickness or influence radius.
+\end{itemize}
+
+% --- ADD: terminology normalization
+Throughout this assignment, ``wall thickness'' and ``influence radius''
+refer to a user-defined distance parameter controlling how far a wall's
+penalty extends.
+
+\section{Wall Penalty Function}
+
+For each wall, define a penalty function $C_{\text{wall}}(\mathbf{x})$ that depends on the
+distance from a point $\mathbf{x}$ to the wall.
+
+Your penalty function must:
+\begin{itemize}
+  \item Increase as the point approaches the wall
+  \item Be zero beyond a chosen influence distance
+  \item Be smooth enough to compute gradients numerically
+\end{itemize}
+
+You may adapt or extend penalty functions used in the notebook (e.g., logarithmic or
+inverse-distance penalties).
+
+% --- ADD: remove ambiguity about gradients
+Gradients may be computed analytically or numerically (e.g., finite differences).
+You are not required to derive closed-form gradients for all penalty terms.
+You may also use library functions for gradient computation if desired.
+
+\section{Combined Cost Function}
+
+Define the total cost as
+\begin{align}
+C(\mathbf{x}) =
+C_{\text{goal}}(\mathbf{x}) +
+\sum_i w_i \, C_{\text{wall},i}(\mathbf{x}),
+\end{align}
+where:
+\begin{itemize}
+  \item $C_{\text{goal}}(\mathbf{x})$ is an attraction term pulling the point toward the goal,
+  \item $C_{\text{wall},i}(\mathbf{x})$ are wall penalty terms,
+  \item $w_i$ are weighting coefficients.
+\end{itemize}
+
+% --- ADD: encourage tuning explicitly
+Parameter tuning (e.g., weights, influence radius) is an expected part
+of this assignment and should be discussed in the report.
+
+\section{Visualization of Cost Fields}
+
+Produce the following visualizations:
+\begin{itemize}
+  \item A contour plot of the total cost function over the floor plan
+  \item A vector field showing the negative gradient of the total cost
+  \item A plot showing walls, start, and goal positions
+\end{itemize}
+
+These visualizations should clearly show how walls shape the cost landscape.
+
+\section{Motion Generation via Gradient Descent}
+
+\begin{itemize}
+  \item Implement gradient descent to animate a point starting from the given start position.
+  \item Use the negative gradient of the total cost to update the position iteratively.
+  \item Stop the animation when the point reaches the goal or after a fixed number of iterations.
+\end{itemize}
+
+% --- ADD: clarify local minima are acceptable
+It is acceptable—and expected—for some configurations to produce local minima.
+Part of this assignment is understanding why these arise.
+
+\section{Analysis}
+
+Answer the following questions:
+\begin{enumerate}
+  \item How does wall thickness or influence radius affect the resulting path?
+  \item What happens near corners or narrow corridors?
+  \item Does the method ever get stuck? Why or why not?
+\end{enumerate}
+
+
+
+\chapter{Penalty Functions to Implement and Compare}
+
+In this assignment, you will implement and compare \textbf{multiple wall penalty functions}.
+All penalty functions must be based on the same geometric primitive: \textbf{Distance from a Point to a Wall Segment}.
+
+Walls are defined as line segments:
+\begin{align}
+s_i = [\mathbf{a}_i, \mathbf{b}_i],
+\end{align}
+and the distance from a point $\mathbf{x} \in \mathbb{R}^2$ to a wall segment is:
+\begin{align}
+d_i(\mathbf{x}) =
+\min_{t \in [0,1]}
+\left\|
+\mathbf{x} -
+\left(\mathbf{a}_i + t(\mathbf{b}_i - \mathbf{a}_i)\right)
+\right\|.
+\label{distance_function}
+\end{align}
+Details on how to calculated Equation \ref{distance_function} are described in Section \ref{how_to_distance}.
+
+
+All wall costs follow the same structure:
+\begin{align}
+C_{\text{walls}}(\mathbf{x}) =
+\sum_i w_i \, \phi\!\left(d_i(\mathbf{x})\right),
+\end{align}
+where $\phi(d)$ is a scalar penalty function.
+
+Your task is to \textbf{experiment with different choices of $\phi(d)$} and analyze how they
+change the resulting motion. You must implement and compare \textbf{at least three} of the penalty functions listed below.
+
+\section{How to calculate the distance function}
+\label{how_to_distance}
+
+The computation of : 
+\begin{align}
+d_i(\mathbf{x}) =
+\min_{t \in [0,1]}
+\left\|
+\mathbf{x} -
+\left(\mathbf{a}_i + t(\mathbf{b}_i - \mathbf{a}_i)\right)
+\right\| 
+\label{distance_function2}
+\end{align}
+can be done as follows:
+\begin{enumerate}
+\item Project the point onto the infinite line through the segment
+\item Restrict the projection to stay within the segment endpoints
+\item Measure the Euclidean distance to that closest point
+\end{enumerate}
+
+Mathematically, these steps are described as follows. 
+
+
+\subsection*{Distance from a Point to a Line Segment}
+
+
+
+Let $\mathbf{x} \in \mathbb{R}^2$ be a point, and let a wall segment be defined by
+its endpoints
+\begin{align}
+s = [\mathbf{a}, \mathbf{b}], \qquad \mathbf{a}, \mathbf{b} \in \mathbb{R}^2.
+\end{align}
+
+\paragraph{Step 1: Segment parameterization}
+Any point on the segment can be written as
+\begin{align}
+\mathbf{p}(t) = \mathbf{a} + t(\mathbf{b} - \mathbf{a}), \qquad t \in [0,1].
+\end{align}
+
+\paragraph{Step 2: Distance to a point on the segment}
+The squared distance from $\mathbf{x}$ to a point on the segment is
+\begin{align}
+f(t)
+=
+\left\|
+\mathbf{x}
+-
+\left(\mathbf{a} + t(\mathbf{b} - \mathbf{a})\right)
+\right\|^2.
+\end{align}
+
+Minimizing $f(t)$ is equivalent to minimizing the Euclidean distance.
+
+\paragraph{Step 3: Unconstrained projection}
+Define the vectors
+\begin{align}
+\mathbf{v} = \mathbf{b} - \mathbf{a},
+\qquad
+\mathbf{w} = \mathbf{x} - \mathbf{a}.
+\end{align}
+
+
+The minimizer of $f(t)$ over the infinite line is
+\begin{align}
+t^\star = \frac{\mathbf{w} \cdot \mathbf{v}}{\mathbf{v} \cdot \mathbf{v}}
+\end{align}
+
+\paragraph{Step 4: Clamp to the segment}
+Since the segment is finite, the valid parameter is
+\begin{align}
+t = \operatorname{clamp}(t^\star, 0, 1),
+\end{align}
+where
+\begin{align}
+\operatorname{clamp}(z, 0, 1) = \min\!\bigl(1, \max(0, z)\bigr).
+\end{align}
+
+
+\paragraph{Step 5: Closest point on the segment}
+The closest point on the segment is
+\begin{align}
+\mathbf{q} = \mathbf{a} + t\,\mathbf{v}.
+\end{align}
+
+
+\paragraph{Step 6: Distance to the segment}
+The distance from $\mathbf{x}$ to the segment is
+\begin{align}
+d(\mathbf{x}, s) = \|\mathbf{x} - \mathbf{q}\|.
+\end{align}
+
+
+\paragraph{Final expression}
+Combining the steps above, the distance from a point to a line segment is
+\begin{align}
+d(\mathbf{x}, s)
+=
+\left\|
+\mathbf{x}
+-
+\left(
+\mathbf{a}
++
+\operatorname{clamp}\!\left(
+\frac{(\mathbf{x} - \mathbf{a}) \cdot (\mathbf{b} - \mathbf{a})}
+{\|\mathbf{b} - \mathbf{a}\|^2},
+\,0,\,1
+\right)
+(\mathbf{b} - \mathbf{a})
+\right)
+\right\|.
+\end{align}
+
+\paragraph{Degenerate case}
+If $\mathbf{a} = \mathbf{b}$, the segment reduces to a single point and the distance
+is simply
+\begin{align}
+d(\mathbf{x}, s) = \|\mathbf{x} - \mathbf{a}\|.
+\end{align}
+
+
+
+The non-vectorized version of the point-to-segment distance computation is shown in Listing~\ref{lst:point_segment_distance}. A version of this code is implemented in the Colab notebook provided with this assignment. 
+
+\begin{listing}
+\centering
+\begin{lstlisting}[language=Python]
+import numpy as np
+
+def point_segment_distance(x, a, b):
+    """
+    Compute the minimum Euclidean distance from a point x to
+    the line segment defined by endpoints a and b.
+
+    This implements:
+        d(x, [a,b]) = min_{t in [0,1]} || x - (a + t(b-a)) ||
+
+    Parameters
+    ----------
+    x : array_like, shape (2,)
+        Query point.
+    a : array_like, shape (2,)
+        Start point of the segment.
+    b : array_like, shape (2,)
+        End point of the segment.
+
+    Returns
+    -------
+    d : float
+        Distance from x to the segment [a,b].
+    """
+
+    # Convert inputs to NumPy arrays (ensures vector math works)
+    x = np.asarray(x, dtype=float)
+    a = np.asarray(a, dtype=float)
+    b = np.asarray(b, dtype=float)
+
+    # Vector along the segment from a to b
+    v = b - a
+
+    # Vector from a to the query point x
+    w = x - a
+
+    # Squared length of the segment
+    vv = np.dot(v, v)
+
+    # Handle degenerate case: segment reduces to a single point
+    if vv == 0.0:
+        return np.linalg.norm(x - a)
+
+    # Project w onto v to find the optimal parameter t
+    t = np.dot(w, v) / vv
+
+    # Clamp t to the segment interval [0, 1]
+    t = np.clip(t, 0.0, 1.0)
+
+    # Compute the closest point on the segment
+    q = a + t * v
+
+    # Distance from x to the closest point q
+    d = np.linalg.norm(x - q)
+
+    return d
+\end{lstlisting}
+\caption{Python implementation of the point-to-segment distance used for wall penalty functions.}
+\label{lst:point_segment_distance}
+\end{listing}
+
+
+\section{Candidate Wall Penalty Functions}
+
+Below are several approved penalty function families. All are valid; none is considered
+``the correct one.'' Your analysis should focus on how their \emph{qualitative behavior}
+differs.
+
+\section{Penalty Function Families to Try}
+
+\subsection{Truncated Log Barrier (Strong Repulsion)}
+
+\begin{align}
+\phi(d) =
+\begin{cases}
+\log\!\left(\dfrac{R}{d + \varepsilon}\right), & d \le R, \\
+0, & d > R.
+\end{cases}
+\end{align}
+
+
+\paragraph{Behavior}
+\begin{itemize}
+  \item Very strong repulsion near the wall
+  \item Effectively creates a ``forbidden'' region close to walls
+\end{itemize}
+
+\paragraph{Discussion Points}
+\begin{itemize}
+  \item Sensitivity to $\varepsilon$
+  \item Behavior near corners
+  \item Numerical stiffness
+\end{itemize}
+
+\subsection{Truncated Inverse-Distance Repulsion}
+
+\begin{align}
+\phi(d) =
+\begin{cases}
+\dfrac{1}{(d + \varepsilon)^p}, & d \le R, \\
+0, & d > R,
+\end{cases}
+\qquad p \in \{1,2\}.
+\end{align}
+
+
+\paragraph{Behavior}
+\begin{itemize}
+  \item Smooth but increasingly aggressive near the wall
+  \item Adjustable sharpness via $p$
+\end{itemize}
+
+\paragraph{Discussion Points}
+\begin{itemize}
+  \item Comparison with the log barrier
+  \item Gradient magnitude near walls
+  \item Stability versus safety
+\end{itemize}
+
+\subsection{Quadratic Band (Soft Wall)}
+
+\begin{align}
+\phi(d) =
+\begin{cases}
+\frac{1}{2}(R - d)^2, & d \le R, \\
+0, & d > R.
+\end{cases}
+\end{align}
+
+
+\paragraph{Behavior}
+\begin{itemize}
+  \item Smooth gradients
+  \item Creates a ``buffer zone'' around walls
+\end{itemize}
+
+\paragraph{Discussion Points}
+\begin{itemize}
+  \item Why trajectories may ``graze'' walls
+  \item Trade-off between smoothness and safety
+\end{itemize}
+
+\subsection{Quartic Band (Sharper Soft Wall)}
+
+\begin{align}
+\phi(d) =
+\begin{cases}
+(R - d)^4, & d \le R, \\
+0, & d > R.
+\end{cases}
+\end{align}
+
+
+\paragraph{Behavior}
+\begin{itemize}
+  \item Stronger repulsion than the quadratic band
+  \item Fully smooth and bounded
+\end{itemize}
+
+\paragraph{Discussion Points}
+\begin{itemize}
+  \item How higher-order penalties change path curvature
+  \item Comparison with inverse-distance penalties
+\end{itemize}
+
+\newpage
+\subsection{Exponential / Gaussian Repulsion}
+
+\begin{align}
+\phi(d) =
+\exp\!\left(-\frac{d^2}{2\sigma^2}\right),
+\end{align}
+optionally truncated for $d > R$.
+
+\paragraph{Behavior}
+\begin{itemize}
+  \item Extremely smooth everywhere
+  \item Long-range but weak influence
+\end{itemize}
+
+\paragraph{Discussion Points}
+\begin{itemize}
+  \item Why this formulation may require larger weights
+  \item Why gradients never truly vanish without truncation
+\end{itemize}
+
+\subsection{Signed-Distance (Capsule) Penetration Penalty}
+
+\emph{Walls have finite thickness.}
+
+Define the signed distance
+\begin{align}
+\operatorname{sdf}_i(\mathbf{x}) = d_i(\mathbf{x}) - t,
+\end{align}
+where $t$ is the wall half-thickness.
+
+The penalty is defined as
+\begin{align}
+\phi(\operatorname{sdf}) =
+\left[\max(0, -\operatorname{sdf})\right]^2.
+\end{align}
+
+
+\paragraph{Behavior}
+\begin{itemize}
+  \item No penalty unless the wall is penetrated
+  \item Clean physical interpretation
+\end{itemize}
+
+\paragraph{Discussion Points}
+\begin{itemize}
+  \item Difference between ``repulsion'' and ``constraint violation''
+  \item Comparison with buffer-zone penalties
+\end{itemize}
+
+\subsection{Corridor-Friendly Penalty (Parallel Walls)}
+
+For two parallel walls forming a corridor, define the cost as
+\begin{align}
+C(\mathbf{x}) =
+C_{\text{goal}}(\mathbf{x})
++ w \sum_i \phi(d_i(\mathbf{x}))
++ \lambda
+\left(
+\operatorname{sdf}_1(\mathbf{x}) -
+\operatorname{sdf}_2(\mathbf{x})
+\right)^2.
+\end{align}
+
+
+\paragraph{Behavior}
+\begin{itemize}
+  \item Prevents oscillation between walls
+  \item Encourages motion along the corridor center
+\end{itemize}
+
+\paragraph{Discussion Points}
+\begin{itemize}
+  \item Why naive wall repulsion fails in narrow passages
+  \item How adding structure changes local minima
+\end{itemize}
+
+\section{Comparison Criteria}
+
+You are encouraged to compare penalty functions along the following axes:
+\begin{itemize}
+  \item Path smoothness
+  \item Clearance from walls
+  \item Convergence speed
+  \item Sensitivity to parameters
+  \item Presence of local minima
+  \item Numerical stability
+\end{itemize}
+
+\section{Recommended Starting Defaults}
+
+For robust behavior, consider the following workflow:
+\begin{itemize}
+  \item Start with the \textbf{Quadratic Band} penalty.
+  \item If walls are crossed, try the \textbf{Log Barrier}.
+  \item If motion becomes too stiff, try the \textbf{Quartic} or \textbf{Gaussian} penalties.
+\end{itemize}
+
+Typical parameter values (in map units):
+\begin{itemize}
+  \item Influence radius $R$: 5--20\% of the map width
+  \item $\varepsilon$: $10^{-3}$--$10^{-2}$
+  \item Weight $w$: 10--100 relative to the goal cost scale
+\end{itemize}
+
+\chapter{Floor Plan Examples}
+
+In this assignment, you will implement and compare different wall penalty functions using this floor plan. 
+The following variations of the floor plan are provided to test specific behaviors:
+\begin{itemize}
+  \item \textbf{Baseline}: The original L-shaped floor plan with a single corner.
+  \item \textbf{Zigzag}: A narrow zig-zag corridor that tests the ability to navigate tight spaces without oscillation.
+  \item \textbf{Dead-end}: A dead-end corridor that tests the ability to escape local minima.
+  \item \textbf{Symmetric}: A symmetric obstacle configuration that tests the ability to break symmetry and avoid getting stuck.
+\end{itemize}
+
+
+Figure \ref{fig:floor_plan} shows a simple floor plan with walls, start, and goal positions. 
+This L-shaped environment is the baseline for testing your penalty functions. 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{figs/floor_plan.png}
+  \caption{Baseline floor plan with walls (black), start (green), and goal (red).}
+  \label{fig:floor_plan}
+\end{figure}  
+
+Figure \ref{fig:floor_plan_gradient} shows the same floor plan with a sample cost field and gradient vector field overlaid. The cost contours illustrate how the walls shape the cost landscape, while the arrows indicate the direction of steepest descent. This visualization helps to understand how different penalty functions influence 
+the motion generated by gradient descent.  
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\textwidth]{figs/floor_plan_gradient.png}
+  \caption{Cost contours and gradient vector field overlaid on the floor plan.}
+  \label{fig:floor_plan_gradient}
+\end{figure}  
+
+\newpage
+Figure \ref{fig:floor_plan_path} shows the resulting trajectory of 
+the animated point as it moves from the start to the goal position under 
+the influence of the combined cost function. The path should navigate 
+around walls while converging toward the goal, demonstrating 
+how the choice of penalty functions affects the motion.  
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\textwidth]{figs/floor_plan_path.png}
+  \caption{Trajectory generated by gradient descent on the combined cost 
+  function.}
+  \label{fig:floor_plan_path}
+\end{figure}  
+
+
+% ---------------------------------------------------------
+% Back matter
+% ---------------------------------------------------------
+\backmatter
+
+% \printbibliography
+
+% ---------------------------------------------------------
+% Appendices
+% ---------------------------------------------------------
+\appendix
+
+% References
+\clearpage
+% \printbibliography[heading=bibintoc]
+
+
+\end{document}
+
+
+
+
+
